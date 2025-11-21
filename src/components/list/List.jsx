@@ -1,18 +1,16 @@
-import { Card, Col, Divider, Skeleton, Typography } from "antd";
+import { Card, Divider, Skeleton, Typography } from "antd";
 
 const List = ({ result, loading }) => {
   const { Text } = Typography
-
-  console.log("rteioasd: ", result);
   let i = 1
   const groupFormated = result.map((group) => {
     return (
-      <Col style={{ padding: 10 }}>
-        <Card
-          size="small"
-          title={`Grupo ${i++}`}
-        >
-          {loading ? <Skeleton active /> : 
+      <Card
+        size="small"
+        title={`Grupo ${i++}`}
+        style={{ margin: 10 }}
+      >
+        {loading ? <Skeleton active /> :
           group.map((linha) => {
             return (
               <p>
@@ -27,8 +25,7 @@ const List = ({ result, loading }) => {
               </p>
             )
           })}
-        </Card>
-      </Col>
+      </Card>
     )
   })
 

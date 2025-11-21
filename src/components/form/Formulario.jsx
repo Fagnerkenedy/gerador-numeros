@@ -1,4 +1,4 @@
-import { Button, Form, Grid } from "antd"
+import { Affix, Button, Form, Grid } from "antd"
 import FormItem from "./FormItem"
 
 const { useBreakpoint } = Grid;
@@ -26,7 +26,16 @@ const Formulario = ({ finish }) => {
             onFinish={finish}
         >
             <FormItem form={form} />
-            <Button style={{ width: '100%' }} type="primary" htmlType="submit">Gerar</Button>
+            <Affix offsetTop={10}>
+                <Button
+                    style={{ width: '100%' }}
+                    type="primary"
+                    htmlType="submit"
+                    onClick={() => document.getElementById('scrollableDiv').scrollIntoView({ behavior: "smooth" })}
+                >
+                    Gerar
+                </Button>
+            </Affix>
         </Form>
     )
 }

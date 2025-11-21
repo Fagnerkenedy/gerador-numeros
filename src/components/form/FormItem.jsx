@@ -22,17 +22,10 @@ const FormItem = ({ form }) => {
                         initialValue={field.initialValue}
                     >
                         <Select
-                            style={{ width: '100%' }}
+                            style={{ width: '100%', textAlign: "left" }}
                             min={field.min || ''}
                             max={field.max || ''}
                             placeholder={field.placeholder || ''}
-                            allowClear
-                            showSearch
-                            variant="filled"
-                            optionFilterProp="children"
-                            filterOption={(input, option) =>
-                                option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-                            }
                             // defaultValue={field.initialValue}
                             onChange={(e, item) => {
                                 form.setFieldValue('minima', item.props.min);
@@ -66,6 +59,7 @@ const FormItem = ({ form }) => {
                         initialValue={field.initialValue}
                     >
                         <InputNumber
+                            inputMode="numeric"
                             style={{ width: '100%' }}
                             min={field.min || ''}
                             max={field.max || ''}

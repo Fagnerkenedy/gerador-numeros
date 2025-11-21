@@ -9,8 +9,8 @@ import notify from "../../utils/notification";
 
 const Home = () => {
     const [result, setResult] = useState([])
-    const { Title } = Typography
     const [loading, setLoading] = useState(false)
+    const { Title } = Typography
 
     const finish = (fields) => {
         try {
@@ -28,7 +28,7 @@ const Home = () => {
             setResult(linhasAgrupadas)
             setTimeout(() => {
                 setLoading(false)
-            }, 600)
+            }, 200)
         } catch (error) {
             console.log("Erro ao gerar números: ", error)
             notify({
@@ -40,19 +40,22 @@ const Home = () => {
                 width: 600,
                 pauseOnHover: true
             })
+            setLoading(false)
+            setResult([])
         }
     }
 
     return (
         <Layout style={{ minHeight: '100vh' }}>
-            <Col style={{ padding: 15 }}>
+            <Col style={{ padding: 35}}>
                 <Title style={{ margin: 10 }} level={3}>Gerador de números aleatórios</Title>
                 <Formulario finish={finish} />
+                <div id="scrollableDiv" />
             </Col>
-            <div id="scrollableDiv"></div>
-            <List result={result} loading={loading} />
+            <Col style={{ padding: 10, minHeight: 1000 }}>
+                <List result={result} loading={loading} />
+            </Col>
             <FloatButton.BackTop />
-
         </Layout>
     )
 }
