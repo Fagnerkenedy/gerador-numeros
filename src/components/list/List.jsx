@@ -8,7 +8,7 @@ const List = ({ result, loading }) => {
       <Card
         size="small"
         title={`Grupo ${i++}`}
-        style={{ margin: 10 }}
+        style={{ marginBottom: 15 }}
       >
         {loading ? <Skeleton active /> :
           group.map((linha) => {

@@ -31,6 +31,7 @@ const FormItem = ({ form }) => {
                                 form.setFieldValue('minima', item.props.min);
                                 form.setFieldValue('maxima', item.props.max);
                                 form.setFieldValue('quantidade', item.props.qtd);
+                                form.setFieldValue('agruparPor', item.props.agrupado);
                                 document.getElementById('scrollableDiv').scrollIntoView({
                                     behavior: "smooth",
                                 });

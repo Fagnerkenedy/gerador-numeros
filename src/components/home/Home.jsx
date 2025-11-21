@@ -1,4 +1,4 @@
-import { Col, FloatButton, Layout, Typography } from "antd"
+import { Affix, Card, Col, Divider, FloatButton, Grid, Layout, Row, Typography } from "antd"
 import { useState } from "react";
 import gerador from "../../utils/gerador";
 import geradorUnico from "../../utils/geradorUnico";
@@ -6,11 +6,14 @@ import List from "../list/List";
 import agrupador from "../../utils/agrupador";
 import Formulario from "../form/Formulario"
 import notify from "../../utils/notification";
+const { useBreakpoint } = Grid;
 
 const Home = () => {
     const [result, setResult] = useState([])
     const [loading, setLoading] = useState(false)
-    const { Title } = Typography
+    const [title, setTitle] = useState('')
+    const { Title, Text } = Typography
+    const screens = useBreakpoint();
 
     const finish = (fields) => {
         try {
@@ -28,6 +31,7 @@ const Home = () => {
             setResult(linhasAgrupadas)
             setTimeout(() => {
                 setLoading(false)
+                setTitle(`${fields.categoria} ${fields.minima}° - ${fields.maxima}°`)
             }, 200)
         } catch (error) {
             console.log("Erro ao gerar números: ", error)
@@ -46,15 +50,27 @@ const Home = () => {
     }
 
     return (
-        <Layout style={{ minHeight: '100vh' }}>
-            <Col style={{ padding: 35}}>
-                <Title style={{ margin: 10 }} level={3}>Gerador de números aleatórios</Title>
-                <Formulario finish={finish} />
+        <Layout style={{ padding: 15, minHeight: '100vh' }}>
+            <Row>
+
+                <Card>
+                    <Title style={{ margin: 10 }} level={3}>Gerador de números aleatórios</Title>
+                    <Formulario finish={finish} />
+                </Card>
+                {screens.xs ? <Divider /> : null}
                 <div id="scrollableDiv" />
-            </Col>
-            <Col style={{ padding: 10, minHeight: 1000 }}>
-                <List result={result} loading={loading} />
-            </Col>
+                <Col style={{ minWidth: screens.xs ? '100%' : 400, minHeight: screens.xs ? 1000 : '' }}>
+                    <Affix offsetTop={screens.xs ? 50 : 20}>
+                        <Card 
+                            style={{ marginBottom: 15 }}
+                            size="small"
+                        >
+                            <Text strong>{title}</Text>
+                        </Card>
+                    </Affix>
+                    <List result={result} loading={loading} />
+                </Col>
+            </Row>
             <FloatButton.BackTop />
         </Layout>
     )
