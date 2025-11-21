@@ -15,8 +15,6 @@ const Home = () => {
     const finish = (fields) => {
         try {
             setLoading(true)
-            console.log("fields", fields);
-
             let numbers
             if (fields.duplicados) {
                 numbers = gerador(fields)

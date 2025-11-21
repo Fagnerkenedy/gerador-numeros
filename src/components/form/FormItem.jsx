@@ -1,6 +1,6 @@
 import { Checkbox, Form, InputNumber, Select, Switch } from "antd"
 import fields from "./fields"
-import { useRef, useState } from "react"
+import { useState } from "react"
 
 const FormItem = ({ form }) => {
     const [checked, setChecked] = useState(true)
