@@ -81,28 +81,28 @@ const fields = [
             },
         ],
         required: true,
-        initialValue: "Carnes"
+        initialValue: "Fritadeiras"
     },
     {
         label: "Temperatura Inicial",
         name: "minima",
         type: "number",
         required: true,
-        initialValue: 70
+        initialValue: 167.0
     },
     {
         label: "Temperatura Final",
         name: "maxima",
         type: "number",
         required: true,
-        initialValue: 90
+        initialValue: 172.0
     },
     {
         label: "Quantidade",
         name: "quantidade",
         type: "number",
         required: true,
-        initialValue: 40
+        initialValue: 8
     },
     {
         label: "Casas decimais",
