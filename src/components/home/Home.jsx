@@ -1,4 +1,4 @@
-import { Col, Layout, Typography } from "antd"
+import { Col, FloatButton, Layout, Skeleton, Typography } from "antd"
 import { useState } from "react";
 import gerador from "../../utils/gerador";
 import geradorUnico from "../../utils/geradorUnico";
@@ -10,9 +10,11 @@ import notify from "../../utils/notification";
 const Home = () => {
     const [result, setResult] = useState([])
     const { Title } = Typography
+    const [loading, setLoading] = useState(false)
 
     const finish = (fields) => {
         try {
+            setLoading(true)
             console.log("fields", fields);
 
             let numbers
@@ -21,15 +23,14 @@ const Home = () => {
             } else {
                 numbers = geradorUnico(fields)
             }
-            // if (numbers.type && numbers.type == "valores_unicos") {
-
-            // }
-
             const grupos = agrupador(numbers, fields.agruparPor || 20)
             const linhasAgrupadas = grupos.map((grupo) => {
                 return agrupador(grupo, fields.numerosPorLinha || 5)
             })
             setResult(linhasAgrupadas)
+            setTimeout(() => {
+                setLoading(false)
+            }, 500)
         } catch (error) {
             console.log("Erro ao gerar números: ", error)
             notify({
@@ -50,7 +51,9 @@ const Home = () => {
                 <Title style={{ margin: 10 }} level={3}>Gerador de números aleatórios</Title>
                 <Formulario finish={finish} />
             </Col>
-            <List result={result}></List>
+            <div id="scrollableDiv"></div>
+            <List result={result} loading={loading} />
+            <FloatButton.BackTop />
         </Layout>
     )
 }

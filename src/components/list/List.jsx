@@ -1,6 +1,6 @@
-import { Card, Col, Divider, Typography } from "antd";
+import { Card, Col, Divider, Skeleton, Typography } from "antd";
 
-const List = ({ result }) => {
+const List = ({ result, loading }) => {
   const { Text } = Typography
 
   console.log("rteioasd: ", result);
@@ -12,7 +12,8 @@ const List = ({ result }) => {
           size="small"
           title={`Grupo ${i++}`}
         >
-          {group.map((linha) => {
+          {loading ? <Skeleton active /> : 
+          group.map((linha) => {
             return (
               <p>
                 {linha.map(number => {

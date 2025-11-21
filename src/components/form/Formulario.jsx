@@ -5,8 +5,10 @@ const { useBreakpoint } = Grid;
 
 const Formulario = ({ finish }) => {
     const screens = useBreakpoint();
+    const [form] = Form.useForm()
     return (
         <Form
+            form={form}
             labelCol={
                 screens.xs
                     ? undefined
@@ -23,7 +25,7 @@ const Formulario = ({ finish }) => {
             layout={screens.xs ? 'vertical' : 'horizontal'}
             onFinish={finish}
         >
-            <FormItem />
+            <FormItem form={form} />
             <Button style={{ width: '100%' }} type="primary" htmlType="submit">Gerar</Button>
         </Form>
     )
