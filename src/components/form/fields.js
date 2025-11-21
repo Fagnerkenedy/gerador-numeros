@@ -3,6 +3,8 @@ const fields = [
         label: "Categoria",
         name: "categoria",
         type: "select",
+        required: true,
+        initialValue: "Fritadeiras",
         options: [
             {
                 id: 1,
@@ -80,8 +82,6 @@ const fields = [
                 qtd: 2,
             },
         ],
-        required: true,
-        initialValue: "Fritadeiras"
     },
     {
         label: "Temperatura Inicial",

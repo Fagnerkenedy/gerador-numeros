@@ -1,50 +1,68 @@
-import { Checkbox, Form, InputNumber, Select, Switch } from "antd"
+import { Checkbox, Form, InputNumber, Menu, Modal, Select, Switch, Typography } from "antd"
 import fields from "./fields"
 import { useState } from "react"
 
 const FormItem = ({ form }) => {
     const [checked, setChecked] = useState(true)
-    const { Option } = Select;
+    const [open, setOpen] = useState(false);
+    const { Text } = Typography
 
+    const handleSelect = (item) => {
+        setOpen(false)
+        form.setFieldValue('categoria', item.name)
+        form.setFieldValue('minima', item.min)
+        form.setFieldValue('maxima', item.max)
+        form.setFieldValue('quantidade', item.qtd)
+        form.setFieldValue('agruparPor', item.agrupado)
+        document.getElementById('scrollableDiv').scrollIntoView({
+            behavior: "smooth",
+        });
+        form.submit()
+    }
     return fields.map(field => {
         switch (field.type) {
             case "select":
                 return (
-                    <Form.Item
-                        label={<span>{field.label}</span>}
-                        name={field.name}
-                        rules={[
-                            {
-                                required: field.required,
-                                message: 'Este campo é obrigatório',
-                            },
-                        ]}
-                        initialValue={field.initialValue}
-                    >
-                        <Select
-                            style={{ width: '100%', textAlign: "left" }}
-                            min={field.min || ''}
-                            max={field.max || ''}
-                            placeholder={field.placeholder || ''}
-                            // defaultValue={field.initialValue}
-                            onChange={(e, item) => {
-                                form.setFieldValue('minima', item.props.min);
-                                form.setFieldValue('maxima', item.props.max);
-                                form.setFieldValue('quantidade', item.props.qtd);
-                                form.setFieldValue('agruparPor', item.props.agrupado);
-                                document.getElementById('scrollableDiv').scrollIntoView({
-                                    behavior: "smooth",
-                                });
-                                form.submit()
-                            }}
+                    <>
+                        <Form.Item
+                            label={<span>{field.label}</span>}
+                            name={field.name}
+                            rules={[
+                                {
+                                    required: field.required,
+                                    message: 'Este campo é obrigatório',
+                                },
+                            ]}
+                            initialValue={field.initialValue}
                         >
-                            {field.options.map(item => (
-                                <Option key={item.id} value={item.name} props={item}>
-                                    {item.name}
-                                </Option>
-                            ))}
-                        </Select>
-                    </Form.Item>
+                            <Select
+                                open={false}
+                                style={{ width: '100%', textAlign: "left" }}
+                                onClick={(e) => setOpen(true)}
+                            />
+                        </Form.Item>
+                        <Modal
+                            open={open}
+                            footer={null}
+                            onCancel={() => setOpen(false)}
+                            centered
+                            title={field.label}
+                        >
+                            <Menu>
+                                {field.options.map((item) => (
+                                    <>
+                                        <Menu.Item
+                                            onClick={() => handleSelect(item)}
+                                        >
+                                            <Text style={{ fontSize: 16 }}>
+                                                {item.name}
+                                            </Text>
+                                        </Menu.Item>
+                                    </>
+                                ))}
+                            </Menu>
+                        </Modal>
+                    </>
                 )
             case "number":
                 return (
