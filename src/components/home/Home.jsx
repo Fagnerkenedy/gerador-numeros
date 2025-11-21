@@ -54,6 +54,7 @@ const Home = () => {
             <div id="scrollableDiv"></div>
             <List result={result} loading={loading} />
             <FloatButton.BackTop />
+            
         </Layout>
     )
 }
