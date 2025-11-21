@@ -31,7 +31,7 @@ const Home = () => {
             setResult(linhasAgrupadas)
             setTimeout(() => {
                 setLoading(false)
-                setTitle(`${fields.categoria} ${fields.minima}° - ${fields.maxima}°`)
+                setTitle(`${fields.categoria} ${fields.minima}° até ${fields.maxima}°`)
             }, 200)
         } catch (error) {
             console.log("Erro ao gerar números: ", error)
