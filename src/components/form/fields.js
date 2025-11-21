@@ -53,7 +53,7 @@ const fields = [
             {
                 id: 7,
                 name: "Banho maria",
-                min: 87.0,
+                min: 85.0,
                 max: 89.0,
                 qtd: 4,
             },
