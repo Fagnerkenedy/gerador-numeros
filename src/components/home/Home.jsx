@@ -1,4 +1,4 @@
-import { Col, FloatButton, Layout, Skeleton, Typography } from "antd"
+import { Col, FloatButton, Layout, Typography } from "antd"
 import { useState } from "react";
 import gerador from "../../utils/gerador";
 import geradorUnico from "../../utils/geradorUnico";
@@ -30,7 +30,7 @@ const Home = () => {
             setResult(linhasAgrupadas)
             setTimeout(() => {
                 setLoading(false)
-            }, 500)
+            }, 600)
         } catch (error) {
             console.log("Erro ao gerar números: ", error)
             notify({
@@ -54,7 +54,7 @@ const Home = () => {
             <div id="scrollableDiv"></div>
             <List result={result} loading={loading} />
             <FloatButton.BackTop />
-            
+
         </Layout>
     )
 }
