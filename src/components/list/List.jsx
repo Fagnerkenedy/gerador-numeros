@@ -1,7 +1,7 @@
 import { Card, Col, Divider, Typography } from "antd";
 
 const List = ({ result }) => {
-  const { Text, Title } = Typography
+  const { Text } = Typography
 
   console.log("rteioasd: ", result);
   let i = 1

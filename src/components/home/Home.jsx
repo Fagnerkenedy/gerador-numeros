@@ -1,4 +1,4 @@
-import { Button, Col, Form, Grid, Input, InputNumber, Layout, Select, Typography } from "antd"
+import { Button, Col, Form, Grid, InputNumber, Layout, Select, Typography } from "antd"
 import { useState } from "react";
 import gerador from "../../utils/gerador";
 import List from "../list/List";
