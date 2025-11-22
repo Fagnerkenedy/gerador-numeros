@@ -6,6 +6,7 @@ import List from "../list/List";
 import agrupador from "../../utils/agrupador";
 import Formulario from "../form/Formulario"
 import notify from "../../utils/notification";
+import { CaretUpOutlined } from "@ant-design/icons";
 const { useBreakpoint } = Grid;
 
 const Home = () => {
@@ -53,25 +54,43 @@ const Home = () => {
         <Layout style={{ padding: 15, minHeight: '100vh' }}>
             <Row>
 
-                <Card>
+                <Card
+                    style={{
+                        minWidth:
+                            screens.xs ? '100%' : 400,
+                        minHeight:
+                            screens.xs ? '100vh' : ''
+                    }}
+                >
                     <Title style={{ margin: 10 }} level={3}>Gerador de números aleatórios</Title>
                     <Formulario finish={finish} />
                 </Card>
                 {screens.xs ? <Divider /> : null}
                 <div id="scrollableDiv" />
-                <Col style={{ minWidth: screens.xs ? '100%' : 400, minHeight: screens.xs ? 1000 : '' }}>
+                <Col
+                    style={{
+                        minWidth:
+                            screens.xs ? '100%' : 400,
+                        minHeight:
+                            screens.xs ? 1000 : ''
+                    }}
+                >
                     <Affix offsetTop={screens.xs ? 50 : 20}>
-                        <Card 
-                            style={{ marginBottom: 15 }}
-                            size="small"
-                        >
-                            <Text strong>{title}</Text>
-                        </Card>
+                        {result.length !== 0 && (
+                            <Card
+                                size="small"
+                                style={{ backgroundColor: "#d3d3d3ff" }}
+                            >
+                                <Text strong>{title}</Text>
+                            </Card>
+                        )}
                     </Affix>
-                    <List result={result} loading={loading} />
+                    <Col style={{ marginTop: 10 }}>
+                        <List result={result} loading={loading} />
+                    </Col>
                 </Col>
             </Row>
-            <FloatButton.BackTop />
+            <FloatButton.BackTop icon={<CaretUpOutlined />} style={{ width: 85, height: 85 }} />
         </Layout>
     )
 }
