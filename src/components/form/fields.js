@@ -81,6 +81,13 @@ const fields = [
                 max: 4.8,
                 qtd: 2,
             },
+            {
+                id: 11,
+                name: "Farofa",
+                min: 15,
+                max: 18,
+                qtd: 4,
+            },
         ],
     },
     {
