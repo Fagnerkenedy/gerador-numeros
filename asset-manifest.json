@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/gerador-numeros/static/css/main.f855e6bc.css",
-    "main.js": "/gerador-numeros/static/js/main.f5c497af.js",
+    "main.js": "/gerador-numeros/static/js/main.14d16976.js",
     "static/js/453.d1a13297.chunk.js": "/gerador-numeros/static/js/453.d1a13297.chunk.js",
     "index.html": "/gerador-numeros/index.html",
     "main.f855e6bc.css.map": "/gerador-numeros/static/css/main.f855e6bc.css.map",
-    "main.f5c497af.js.map": "/gerador-numeros/static/js/main.f5c497af.js.map",
+    "main.14d16976.js.map": "/gerador-numeros/static/js/main.14d16976.js.map",
     "453.d1a13297.chunk.js.map": "/gerador-numeros/static/js/453.d1a13297.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f855e6bc.css",
-    "static/js/main.f5c497af.js"
+    "static/js/main.14d16976.js"
   ]
 }
